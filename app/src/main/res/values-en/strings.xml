@@ -1,0 +1,7 @@
+<resources>
+    //aplication相关
+    <string name="app_name">FBHeadlines</string>
+    <string name="action_settings">Settings</string>
+
+
+</resources>

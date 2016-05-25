@@ -1,0 +1,17 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+
+    //首頁底部導航的尺寸
+    <dimen name="image_size_25dp">25dp</dimen>
+    <dimen name="image_size_26dp">26dp</dimen>
+    <dimen name="image_size_27dp">27dp</dimen>
+    <dimen name="image_magin_size_5dp">5dp</dimen>
+    <dimen name="image_magin_size_10dp">10dp</dimen>
+    <dimen name="slidingmenu_offset">200dp</dimen>
+    <dimen name="my_yemian_xiaoxi_jianju">9dp</dimen>
+
+</resources>

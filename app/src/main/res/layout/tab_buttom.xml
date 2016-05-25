@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/id_tab_main"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/image_magin_size_10dp"
+        android:layout_marginBottom="@dimen/image_magin_size_5dp"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/ib_tab_main_icon_grey"
+            android:layout_width="@dimen/image_size_27dp"
+            android:layout_height="@dimen/image_size_27dp"
+            android:background="#00000000"
+            android:clickable="false"
+            android:src="@drawable/tab_main_icon_grey" />
+
+        <TextView
+            android:id="@+id/tv_tab_main_icon_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/image_magin_size_5dp"
+            android:text="首頁"
+            android:textColor="@color/shouye_tab_grep" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_tab_find"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/image_magin_size_10dp"
+        android:layout_marginBottom="@dimen/image_magin_size_5dp"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/ib_tab_find_icon_grey"
+            android:layout_width="@dimen/image_size_26dp"
+            android:layout_height="@dimen/image_size_26dp"
+            android:background="#00000000"
+            android:clickable="false"
+            android:src="@drawable/tab_find_icon_grey" />
+
+        <TextView
+            android:id="@+id/tv_tab_find_icon_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/image_magin_size_5dp"
+            android:text="發現"
+            android:textColor="@color/shouye_tab_grep" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/image_magin_size_10dp"
+        android:layout_marginBottom="@dimen/image_magin_size_5dp"
+        android:id="@+id/id_tab_my"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/ib_tab_my_icon_grey"
+            android:layout_width="@dimen/image_size_25dp"
+            android:layout_height="@dimen/image_size_25dp"
+            android:background="#00000000"
+            android:clickable="false"
+            android:src="@drawable/tab_my_icon_grey" />
+
+        <TextView
+            android:id="@+id/tv_tab_my_icon_grey"
+            android:layout_marginTop="@dimen/image_magin_size_5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的"
+            android:textSize="15sp"
+            android:textColor="@color/shouye_tab_grep" />
+    </LinearLayout>
+
+
+</LinearLayout>
