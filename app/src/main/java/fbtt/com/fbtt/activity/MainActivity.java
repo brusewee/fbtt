@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import fbtt.com.fbtt.FBApplication;
 import fbtt.com.fbtt.R;
 import fbtt.com.fbtt.adapter.TabFragmentPagerAdapter;
 import fbtt.com.fbtt.fragment.FindFragment;
@@ -48,6 +49,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab_main_viewpager);
+        FBApplication.register(this);
         shouyeRed=getResources().getColor(R.color.shouye_tab_red);
         shouyeGrep=getResources().getColor(R.color.shouye_tab_grep);
         initView();
@@ -223,7 +225,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             Toast.makeText(this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
             touchTime = currentTime;
         } else {
-            finish();
+            FBApplication.finishAllActivity();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FBApplication.unRegister(this);
+        
     }
 }
