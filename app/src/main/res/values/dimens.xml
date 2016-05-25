@@ -13,5 +13,6 @@
     <dimen name="image_magin_size_7dp">7dp</dimen>
     <dimen name="slidingmenu_offset">200dp</dimen>
     <dimen name="my_yemian_xiaoxi_jianju">9dp</dimen>
+    <dimen name="my_huo_fan_distance">15dp</dimen>
 
 </resources>
