@@ -30,6 +30,14 @@
 
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <LinearLayout
         android:background="@color/white"
         android:layout_width="match_parent"
@@ -139,32 +147,210 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <LinearLayout
+        <RelativeLayout
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+
+            >
             <ImageView
+
                 android:layout_marginLeft="12dp"
                 android:id="@+id/iv_my_huodong"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:src="@drawable/my_huodong"/>
             <TextView
-                android:layout_marginLeft="12dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="40dp"
                 android:textSize="14sp"
-                android:layout_alignRight="@id/iv_my_huodong"
                 android:text="活動"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_my"/>
+
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/xiayibu_my"/>
 
+        </RelativeLayout>
 
-        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+        <View
+            android:background="#E8E8E8"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <ImageView
+
+                android:layout_marginLeft="12dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/yejian_my"/>
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="40dp"
+                android:textSize="14sp"
+                android:text="夜间"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/xiayibu_my"/>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+        <View
+            android:background="#E8E8E8"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <ImageView
+
+                android:layout_marginLeft="12dp"
+
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/shenliuliang"/>
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="40dp"
+                android:textSize="14sp"
+                android:text="省流量模式"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/xiayibu_my"/>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+        <View
+            android:background="#E8E8E8"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <ImageView
+
+                android:layout_marginLeft="12dp"
+
+                android:layout_width="20dp"
+                android:layout_height="18dp"
+                android:src="@drawable/zhouwei_my"/>
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="40dp"
+                android:layout_centerVertical="true"
+                android:textSize="14sp"
+                android:text="周围的人"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/xiayibu_my"/>
+
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -180,10 +366,53 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="my"
-        android:textSize="40sp"/>
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <ImageView
+
+                android:layout_marginLeft="12dp"
+
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/fankui_my"/>
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="40dp"
+                android:textSize="14sp"
+                android:text="反馈"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/xiayibu_my"/>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+    </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

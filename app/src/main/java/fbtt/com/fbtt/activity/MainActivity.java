@@ -172,6 +172,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private void updateTexts() {
 
+
     }
 
 
@@ -233,6 +234,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     protected void onDestroy() {
         super.onDestroy();
         FBApplication.unRegister(this);
-        
+
     }
 }
