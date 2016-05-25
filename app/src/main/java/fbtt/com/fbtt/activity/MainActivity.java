@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,18 +50,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.tab_main_viewpager);
         shouyeRed=getResources().getColor(R.color.shouye_tab_red);
         shouyeGrep=getResources().getColor(R.color.shouye_tab_grep);
-
         initView();
         initClickListener();
         setSelect(0);
-
         createSlidingMenu();
-
-
-
     }
 
     private void createSlidingMenu() {
+
 
 
 
@@ -178,7 +175,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.id_tab_main:
                 //注意上面修改的只是图标的状态,还要修改相对应的fragment;
@@ -196,7 +192,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     //设置将点击的那个图标为亮色,切换内容区域
     private void setSelect(int i) {
-
         initTabImage();
         switch (i) {
             case 0:
@@ -215,5 +210,20 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
         }
         mViewPager.setCurrentItem(i);
+    }
+
+    long waitTime = 2000;
+    long touchTime = 0;
+
+    @Override
+    public void onBackPressed() {
+
+        long currentTime = System.currentTimeMillis();
+        if ((currentTime - touchTime) >= waitTime) {
+            Toast.makeText(this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+            touchTime = currentTime;
+        } else {
+            finish();
+        }
     }
 }
