@@ -6,12 +6,13 @@
     <dimen name="text_size_20sp">20sp</dimen>
 
     //首頁底部導航的尺寸
-    <dimen name="image_size_25dp">25dp</dimen>
+    <dimen name="image_size_24dp">24dp</dimen>
     <dimen name="image_size_26dp">26dp</dimen>
-    <dimen name="image_size_27dp">27dp</dimen>
-    <dimen name="image_magin_size_5dp">5dp</dimen>
-    <dimen name="image_magin_size_10dp">10dp</dimen>
+    <dimen name="image_size_25dp">25dp</dimen>
+    <dimen name="image_magin_size_3dp">3dp</dimen>
+    <dimen name="image_magin_size_7dp">7dp</dimen>
     <dimen name="slidingmenu_offset">200dp</dimen>
     <dimen name="my_yemian_xiaoxi_jianju">9dp</dimen>
+    <dimen name="my_huo_fan_distance">15dp</dimen>
 
 </resources>

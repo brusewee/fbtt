@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    
+    tools:context=".MainActivity">
+    <group android:checkableBehavior="single" >
+
+        <item
+            android:id="@+id/navigation_item_hongkong"
+            android:icon="@mipmap/hongkong_3x"
+            android:title="香港" />
+        <item
+            android:id="@+id/navigation_item_taiwan"
+            android:icon="@mipmap/taiwan_3x"
+            android:title="台灣" />
+        <item
+            android:id="@+id/navigation_item_mainland"
+            android:icon="@mipmap/mainland_3x"
+            android:title="大陸" />
+        <item
+            android:id="@+id/navigation_item_international"
+            android:icon="@mipmap/international_3x"
+            android:title="國際" />
+    </group>
+
+
+</menu>
