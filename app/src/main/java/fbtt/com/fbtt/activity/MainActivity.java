@@ -2,15 +2,17 @@ package fbtt.com.fbtt.activity;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +24,10 @@ import android.widget.Toast;
 
 import com.jaeger.library.StatusBarUtil;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -31,11 +37,18 @@ import butterknife.ButterKnife;
 import fbtt.com.fbtt.FBApplication;
 import fbtt.com.fbtt.R;
 import fbtt.com.fbtt.adapter.TabFragmentPagerAdapter;
+import fbtt.com.fbtt.constants.Constants;
 import fbtt.com.fbtt.fragment.FindFragment;
 import fbtt.com.fbtt.fragment.MainFragment;
 import fbtt.com.fbtt.fragment.MyFragment;
+import fbtt.com.fbtt.utils.CustomTask;
+import fbtt.com.fbtt.utils.DebugUtils;
+import fbtt.com.fbtt.utils.UtilityUtils;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
+
+
+    private String TAG = "MainActivity";
 
     @Bind(R.id.tab_main_viewpager)
     ViewPager mViewPager;
@@ -76,6 +89,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         ButterKnife.bind(this);
         StatusBarUtil.setColor(MainActivity.this, Color.RED);
         FBApplication.register(this);
+        if (UtilityUtils.isNewWorkConnected(this)){
+            getLocation();
+
+        }
+        getLocation();
         shouyeRed = getResources().getColor(R.color.shouye_tab_red);
         shouyeGrep = getResources().getColor(R.color.shouye_tab_grep);
         initView();
@@ -83,6 +101,78 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setSelect(0);
         createSlidingMenu();
         initDrawer();
+    }
+
+
+
+    private Handler GetLocationHandler=new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case Constants.LOCATION_LIST_FLAGE:
+                    DebugUtils.i(TAG, "獲取地址的信息：" + msg.obj.toString());
+
+                        try {
+                            if (!TextUtils.isEmpty(msg.obj.toString())) {
+                               JSONObject json = new JSONObject(msg.obj.toString());
+                                boolean success=json.optBoolean("success");
+
+                                if (success){
+                                    JSONArray locationArrayList=json.optJSONArray("data");
+                                    for(int i=0 ; i < 3 ;i++){
+                                        JSONObject myjObject = locationArrayList.getJSONObject(i);
+                                        String imageUrl=myjObject.optString("imageUrl");
+                                        StringBuffer stringBuffer = new StringBuffer();
+                                        stringBuffer.append(imageUrl);
+                                        stringBuffer.deleteCharAt(0);
+                                        String imageUrlStr=stringBuffer.toString();
+                                        String imageUrlFull = (Constants.ISTEST ? Constants.ClientHTTP : Constants.HOST_ONLINE_HTTPS) + imageUrlStr;
+                                        DebugUtils.i(TAG,"iconUrlFull——地址"+imageUrlFull);
+                                        String name=myjObject.optString("name");
+                                        //Bitmap locationIcon=StreamUtils.getBitmapFromUrl(imageUrlFull);
+                                        //byte[] bytes=StreamUtils.bitmap2Bytes(locationIcon);
+                                       // DebugUtils.i(TAG,"獲取的地區圖片"+bytes.toString());
+
+
+                                    }
+
+
+
+                                }
+
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+
+
+
+                    break;
+
+
+
+
+
+            }
+
+
+        }
+
+    };
+
+    private void getLocation() {
+
+        CustomTask task = new CustomTask(GetLocationHandler, Constants.LOCATION_LIST_FLAGE,
+                Constants.LOCATION_LIST, true, null, Constants.UTF8);
+        task.execute();
+
+
+
     }
 
     private void initDrawer() {
@@ -98,6 +188,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 Toast.makeText(MainActivity.this, "區域選擇", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private void setNavigationViewItemClickListener() {
