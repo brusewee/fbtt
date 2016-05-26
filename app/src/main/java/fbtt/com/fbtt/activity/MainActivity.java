@@ -3,6 +3,7 @@ package fbtt.com.fbtt.activity;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -43,6 +44,7 @@ import fbtt.com.fbtt.fragment.MainFragment;
 import fbtt.com.fbtt.fragment.MyFragment;
 import fbtt.com.fbtt.utils.CustomTask;
 import fbtt.com.fbtt.utils.DebugUtils;
+import fbtt.com.fbtt.utils.StreamUtils;
 import fbtt.com.fbtt.utils.UtilityUtils;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
@@ -90,10 +92,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         StatusBarUtil.setColor(MainActivity.this, Color.RED);
         FBApplication.register(this);
         if (UtilityUtils.isNewWorkConnected(this)){
-            getLocation();
+            getLocationInformation();
 
         }
-        getLocation();
+        getLocationInformation();
         shouyeRed = getResources().getColor(R.color.shouye_tab_red);
         shouyeGrep = getResources().getColor(R.color.shouye_tab_grep);
         initView();
@@ -104,6 +106,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
 
+
+    private String iconUrl;
 
     private Handler GetLocationHandler=new Handler() {
 
@@ -122,50 +126,44 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                                     JSONArray locationArrayList=json.optJSONArray("data");
                                     for(int i=0 ; i < 3 ;i++){
                                         JSONObject myjObject = locationArrayList.getJSONObject(i);
-                                        String imageUrl=myjObject.optString("imageUrl");
-                                        StringBuffer stringBuffer = new StringBuffer();
-                                        stringBuffer.append(imageUrl);
-                                        stringBuffer.deleteCharAt(0);
-                                        String imageUrlStr=stringBuffer.toString();
-                                        String imageUrlFull = (Constants.ISTEST ? Constants.ClientHTTP : Constants.HOST_ONLINE_HTTPS) + imageUrlStr;
-                                        DebugUtils.i(TAG,"iconUrlFull——地址"+imageUrlFull);
+                                        iconUrl=myjObject.optString("iconUrl");
+                                        //StringBuffer stringBuffer = new StringBuffer();
+                                       // stringBuffer.append(imageUrl);
+                                       // stringBuffer.deleteCharAt(0);
+                                        //String imageUrlStr=stringBuffer.toString();
+                                        //String imageUrlFull = (Constants.ISTEST ? Constants.ClientHTTP : Constants.HOST_ONLINE_HTTPS) + imageUrlStr;
+                                        DebugUtils.i(TAG, "iconUrlFull——地址" + iconUrl);
                                         String name=myjObject.optString("name");
-                                        //Bitmap locationIcon=StreamUtils.getBitmapFromUrl(imageUrlFull);
-                                        //byte[] bytes=StreamUtils.bitmap2Bytes(locationIcon);
-                                       // DebugUtils.i(TAG,"獲取的地區圖片"+bytes.toString());
-
+                                        new Thread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Bitmap locationIcon=StreamUtils.getBitmapFromUrl(iconUrl);
+                                                Message mess = Message.obtain();
+                                                mess.what =Constants.LOCATION_LIST_FLAGE_ICON;
+                                                mess.obj=locationIcon;
+                                                sendMessage(mess);
+                                            }
+                                        }).start();
 
                                     }
-
-
-
                                 }
-
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
-
-
-
-
                     break;
 
-
-
-
-
+                case Constants.LOCATION_LIST_FLAGE_ICON:
+                    Bitmap locationIcon= (Bitmap) msg.obj;
+                    byte[] bytes= StreamUtils.bitmap2Bytes(locationIcon);
+                    DebugUtils.i(TAG,"获取的地点信息图"+bytes.toString());
+                    break;
             }
-
-
         }
 
     };
 
-    private void getLocation() {
+    private void getLocationInformation() {
 
         CustomTask task = new CustomTask(GetLocationHandler, Constants.LOCATION_LIST_FLAGE,
                 Constants.LOCATION_LIST, true, null, Constants.UTF8);
@@ -391,4 +389,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         ButterKnife.unbind(this);
 
     }
+
+
 }
